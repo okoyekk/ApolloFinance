@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+    <h1>Welcome back to Apollo Finance, {{name}}. Here are your insights for today:</h1>
+    <h2>Tasks:</h2>
+    {% if  len != 0%}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Due date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for n in num%}
+                <tr>
+                <td>{{n + 1}}</td>
+                <td>{{tasks[n]}}</td>
+                <td>{{dates[n]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+    <h2 style="color:chartreuse;"> All Clear for today!</h2>
+    {% endif %}
+    <h2>Cash balance: ${{cash}}</h2>
+{% endblock %}

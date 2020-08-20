@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Complete A Task
+{% endblock %}
+{% block main %}
+{% if len == 0 %}
+<h4 style="color: chartreuse;">ALL TASKS COMPLETED!</h4>
+{% else %}
+<form style="text-align:center;" id="form" action="/complete_task" method="post">
+    <select name="tasks">
+        {%for n in num%}
+        <option value={{id[n]}}>{{tasks[n]}}</option>
+        {%endfor%}
+    </select>
+    <button style="text-align:center;" class="btn btn-primary" id="submit" type="submit">Complete Task</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block main %}
+{%if title == "Calculator"%}
+<h3>Use one of the forms below to calculate a few basic math functions:</h3>
+<h4>SIMPLE INTEREST</h4>
+<form action="/simple_interest" method="POST" id="simple_interest" style="text-align: center;">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="principle" placeholder="Principle" type="number"
+            min="1">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="rate" placeholder="Rate" type="number" min="1">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="time" placeholder="Time" type="number" min="1"
+            step="1">
+    </div>
+    <button style="text-align:center;" class="btn btn-primary" type="submit">CALCULATE</button>
+</form>
+<h4>COMPOUND INTEREST</h4>
+<form action="/compound_interest" method="POST" id="compound_interest" style="text-align: center;">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="principle" placeholder="Principle" type="number"
+            min="1">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="rate" placeholder="Rate" type="number" min="1">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="time" placeholder="Time" type="number" min="1">
+    </div>
+    <button style="text-align:center;" class="btn btn-primary" type="submit">CALCULATE</button>
+</form>
+<h4>PROFITABILITY OF AN INVESTMENT</h4>
+<form action="/profitability" method="POST" id="profitability" style="text-align: center;">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="initial_value" placeholder="Initial Value"
+            type="number" min="1">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="final_value" placeholder="Final Value"
+            type="number" min="1">
+    </div>
+    <button style="text-align:center;" class="btn btn-primary" type="submit">CALCULATE</button>
+</form>
+<h4>PROFIT MARGIN</h4>
+<form action="/profit_margin" method="POST" id="profit_margin" style="text-align: center;">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="net_income" placeholder="Net Income"
+            type="number" min="1">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="revenue" placeholder="Revenue" type="number"
+            min="1">
+    </div>
+    <button style="text-align:center;" class="btn btn-primary" type="submit">CALCULATE</button>
+</form>
+{%endif%}
+
+{%if title == "Simple interest"%}
+<h4>The simple interest on ${{principle}} invested at a rate of {{rate}}% for {{time}} years is
+    ${{simple_interest|round}}</h4>
+<h4>The total value of the ${{principle}} investment after {{time}} years is ${{amount|round}}.</h4>
+{%endif%}
+
+{%if title == "Compound interest"%}
+<h4>The compound interest on ${{principle}} invested at a rate of {{rate}}% for {{time}} years is
+    ${{compound_interest|round}}</h4>
+<h4>The total value of the ${{principle}} investment after {{time}} years is ${{amount|round}}.</h4>
+{%endif%}
+
+{%if title == "Profitability"%}
+<h4>The profitability of an investment with an initial value of ${{initial_value}} and a final value of ${{final_value}}
+    is {{profitability|round}}</h4>
+{%endif%}
+
+{%if title == "Profit margin"%}
+<h4>The profit margin on a Revenue of ${{revenue}} with a net income of ${{net_income}} is ${{profit_margin|round}}</h4>
+{%endif%}
+{% endblock %}

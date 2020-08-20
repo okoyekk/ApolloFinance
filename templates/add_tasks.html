@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add A Task
+{% endblock %}
+
+{% block main %}
+<form style="text-align:center;" id="form" action="/add_task" method="post">
+    <div class="form-group">
+        <input onkeypress="return alpha(event)" autocomplete="off" autofocus class="form-control" name="task"
+            placeholder="Task" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="due_date" autocomplete="off" name="due_date" placeholder="Due Date" type="text">
+    </div>
+    <button style="text-align:center;" class="btn btn-primary" id="submit" type="submit">Add Task</button>
+</form>
+<script>
+    document.querySelector('#due_date').onkeyup = function () {
+        if (document.querySelector('#due_date').value === null) {
+            document.querySelector('#submit').disabled = true;
+        } else {
+            document.querySelector('#submit').disabled = false;
+        }
+    }
+
+    function alpha(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+    }
+</script>
+{% endblock %}

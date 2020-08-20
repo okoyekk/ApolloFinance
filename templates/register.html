@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<!--form enables users to register by typing a unique username, password and confirming the password-->
+<h3>Fill out the form below with your details to open an account with Apollo Finance</h3>
+<form action="/register" method="post">
+    <div class="form-group">
+        <input onkeypress="return alpha(event)" autocomplete="off" autofocus class="form-control" name="name" id="name"placeholder="Name" type="text">
+    </div>
+    <div class="form-group">
+        <input onkeypress="return alpha(event)" autocomplete="off" autofocus class="form-control" name="username" id="username" placeholder="Username" type="text">
+    </div>
+    <div class="form-group">
+        <input onkeypress="return alpha(event)" autocomplete="off" autofocus class="form-control" name="email" id="email" placeholder="Email" type="text">
+    </div>
+    <div class="form-group">
+        <input onkeypress="return alpha(event)" class="form-control" name="password" id="password" placeholder="Password" type="password">
+    </div>
+    <div class="form-group">
+        <input onkeypress="return alpha(event)" class="form-control" name="password_confirm" id="password_confirm" placeholder="Password Confirmation"
+            type="password">
+    </div>
+    <button class="btn btn-primary" id="submit" type="submit">Register</button>
+</form>
+<!--the register button is disabled unless the password is confirmed-->
+<script>
+    document.querySelector('#password_confirm').onkeyup = function () {
+        if (document.querySelector('#password_confirm').value === document.querySelector('#password').value){
+            document.querySelector('#submit').disabled = false;
+        } else {
+            document.querySelector('#submit').disabled = true;
+        }
+    }
+    function alpha(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 63 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+    }
+</script>
+{% endblock %}

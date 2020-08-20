@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Record a Transaction
+{% endblock %}
+
+{% block main %}
+<h4 style="color:red;">RECORD A PURCHASE</h4>
+<form action="/purchase" method="post">
+    <div class="form-group">
+        <input autocomplete="off" autofocus="" class="form-control" name="title" placeholder="Title of transaction"
+            type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control" min="1" name="cost" placeholder="Cost" type="number" id="cost">
+    </div>
+    <button class="btn btn-primary" type="submit" id="purchase">Confirm Purchase</button>
+</form>
+
+<h4 style="color:chartreuse;">RECORD A SALE</h4>
+<form action="/sale" method="post">
+    <div class="form-group">
+        <input autocomplete="off" autofocus="" class="form-control" name="title" placeholder="Title of transaction"
+            type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control" min="1" name="price" placeholder="Sale Price" type="number"
+            id="price">
+    </div>
+    <button class="btn btn-primary" type="submit" id="sale">Confirm Sale</button>
+</form>
+
+<h4 style="color:chartreuse;">ADD MONEY TO ACCOUNT BALANCE</h4>
+<form action="/add" method="post">
+    <div class="form-group">
+        <input autocomplete="off" class="form-control" min="1" name="amount" placeholder="Amount" type="number"
+            id="amount">
+    </div>
+    <button class="btn btn-primary" type="submit" id="add">Confirm Transaction</button>
+</form>
+
+<h4 style="color:red;">WITHDRAW MONEY FROM ACCOUNT BALANCE</h4>
+<form action="/withdraw" method="post">
+    <div class="form-group">
+        <input autocomplete="off" class="form-control" min="1" name="amount" placeholder="Amount" type="number"
+            id="amount">
+    </div>
+    <button class="btn btn-primary" type="submit" id="withdraw">Confirm Transaction</button>
+</form>
+{% endblock %}

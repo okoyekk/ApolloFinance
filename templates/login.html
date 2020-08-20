@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <h3>Welcome to <b>Apollo Finance</b>,</h3>
+    <h4>An app that helps keep track of your personal finance and productivity</h4>
+    <p>Log in with your details below! Or Create an account by Clicking on the Register button above!</p>
+    <form style= "text-align:center;" id="form" action="/login" method="post">
+        <div class="form-group">
+            <input onkeypress="return alpha(event)" autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input onkeypress="return alpha(event)" class="form-control" id="password" name="password" placeholder="Password" type="password">
+        </div>
+        <button style= "text-align:center;" class="btn btn-primary" type="submit">Log In</button>
+    </form>
+    <p style= "text-align:center;"><a href="/password_change">Forgot Password?</a></p>
+    <script>
+        document.querySelector('#password').onkeyup = function () {
+            if (document.querySelector('#password').value === null){
+                document.querySelector('#submit').disabled = true;
+            } else {
+                document.querySelector('#submit').disabled = false;
+            }
+        }
+        function alpha(e) {
+            var k;
+            document.all ? k = e.keyCode : k = e.which;
+            return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+        }
+    </script>
+{% endblock %}
