@@ -54,4 +54,11 @@
     </main>
     <p style="text-align: center;">Made with ❤ By Kenechi Okoye</p>
 </body>
+<script>
+        function alpha(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 62 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 40 && k <= 57));
+    }
+</script>
 </html>
